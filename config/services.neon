@@ -1,0 +1,3 @@
+services:
+	- App\Model\BrandManager
+	- App\Router\RouterFactory::createRouter

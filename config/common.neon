@@ -1,0 +1,23 @@
+parameters:
+
+
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=netteBrands_db'
+	user: 'root'
+	password:
+
+
+application:
+	errorPresenter: Auxiliary:Error
+	mapping:
+		*: App\Module\*\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+
+di:
+	export:
+		parameters: no
+		tags: no

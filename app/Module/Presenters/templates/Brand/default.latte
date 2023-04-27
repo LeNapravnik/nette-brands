@@ -1,0 +1,115 @@
+
+{block content}
+
+<div class="container grey lighten-3">
+  <div class="row">
+    <div class="col s12">
+      <nav>
+        <div class="nav-wrapper light-blue">
+          <a n:href="Brand:default" class="brand-logo"><i class="material-icons">arrow_back</i> Značky</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <div class="container white">
+        <div class="row">
+          <div class="col s12">
+            <a n:href="Brand:add" class="btn waves-effect waves-light light-blue"><i class="material-icons">add</i> Přidat značku</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <table class="responsive-table brands">
+              <thead class="grey lighten-3">
+                <tr>
+                  <th>Název
+                   <a n:href="default, $page, $pagination, asc"><i class="material-icons small">arrow_upward</i></a>
+                   <a n:href="default, $page, $pagination, desc"><i class="material-icons small">arrow_downward</i></a></th>
+                  <th class="right-align">Akce</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr n:foreach="$brands as $brand">
+                  <td>
+                    {$brand->name}
+                  </td>
+                  <td class="right-align">
+                    <a class="" onclick="return confirm('Opravdu chcete smazat značku {$brand->name}?');" n:href="delete! $brand->id" class="ajax">Smazat</a>
+                     <a class="" n:href="edit $brand->id">Upravit</a> 
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div style="float:right"> <!-- pagination -->
+              {if $page > 1}
+                <a n:href="default, $page - 1, $pagination, $order"><i class="material-icons small">chevron_left</i></a>
+		            <a n:href="default, 1, $pagination, $order">1</a>
+              {/if}
+
+	            {if $page == 1}
+                <u>{$page}</u>
+                {for $i = 2; $i <= 5; $i++}
+                  {if $i < $lastPage}
+                    <a n:href="default, $i, $pagination, $order">{$i}</a>
+                  {/if}
+                {/for}
+	            {/if}
+
+              {if $page - 3 > 1}
+                ...
+	            {/if}
+
+              {if $page != 1 && $page != $lastPage}
+                {for $i = 2; $i < $lastPage; $i++}
+                  {if $page == $i}
+                    <u>{$page}</u>
+                  {/if}
+                  {if $i >= $page - 2 && $i < $page}
+                    <a n:href="default, $i, $pagination, $order">{$i}</a>
+                  {/if}
+                  {if $i <= $page + 2 && $i > $page}
+                    <a n:href="default, $i, $pagination, $order">{$i}</a>
+                  {/if}
+                {/for}
+              {/if}
+
+              {if $page + 3 < $lastPage}
+               ...
+              {/if}
+
+              {if $page < $lastPage}
+                <a n:href="default, $lastPage, $pagination, $order">{$lastPage}</a>
+                <a n:href="default, $page + 1, $pagination, $order"><i class="material-icons small">chevron_right</i></a>
+              {/if}
+
+	            {if $page == $lastPage}
+                {for $i = $lastPage - 4; $i < $lastPage; $i++}
+                  {if $i > 1}
+                    <a n:href="default, $i, $pagination, $order">{$i}</a>
+                  {/if}
+                {/for}
+                <u>{$lastPage}</u>
+	            {/if}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div style="float:right">        <!-- paginace výběr počtu položek na stránku -->
+              <a n:href="default, $page, 10, $order">10</a> <a n:href="default, $page, 20, $order">20</a> <a n:href="default, $page, 30, $order">30</a>
+            </div>
+          </div>
+        </div>
+      </div>        
+    </div>
+  </div>
+</div>       

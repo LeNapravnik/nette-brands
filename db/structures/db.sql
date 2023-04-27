@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS nettebrands_db;
+USE nettebrands_db;
+
+CREATE TABLE IF NOT EXISTS `brand` (
+    `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT , 
+    `name` VARCHAR(100) NOT NULL , 
+    `country` VARCHAR(100) NULL DEFAULT NULL , 
+    `description` TEXT NULL DEFAULT NULL , 
+    `insertion_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP , 
+    `deleted` BOOLEAN NOT NULL DEFAULT FALSE ,
+    PRIMARY KEY (`id`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+

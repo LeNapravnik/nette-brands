@@ -1,0 +1,52 @@
+
+{block content}
+
+{ifset $edit}
+  <h2>Editace značky</h2>
+{else}
+  <h2>Vytvoření značky</h2>
+{/ifset}
+
+<div class="clear"></div>
+<a n:href="Brand:default" class="btn waves-effect waves-light light-blue"><i class="material-icons">arrow_back</i> Zpět na přehled</a>
+
+<br /><br />
+
+<div id="form-wrapper">
+  {form brandForm}
+
+    <div class="row">
+
+      <div class="col-sm-4 left-block">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="box box-success">
+              <div class="box-body ">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="form-group">
+                      {label name /}
+                      {input name, class => "form-control"}
+                    </div>
+                    <div class="form-group">
+                      {label country /}
+                      {input country, class => "form-control"}
+                    </div>
+                    <div class="form-group">
+                      {label description /}
+                      {input description, class => "form-control"}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="button-wrapper">
+      <button id="submit" class="waves-effect waves-light btn" n:name="submit">Uložit</button>
+    </div>
+
+  {/form}
